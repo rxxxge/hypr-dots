@@ -1,0 +1,38 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "$HOME/.config/fastfetch/mk.txt",
+    // "width": 15,
+    // "height": 18,
+    "padding": {
+      "top": 1,
+      "left": 0,
+      "right": 2
+      // "bottom": 1
+    }
+  },
+  "display": {
+    "separator": " "
+  },
+  "modules": [
+    "title",
+    "separator",
+    "os",
+    "host",
+    "kernel",
+    "uptime",
+    "packages",
+    "terminal",
+    "cpu",
+    "gpu",
+    "memory",
+    "break",
+    "colors"
+  ]
+}
+
+// Sat 03: 9 - 12:30 CG, 12:30 - 5:30 ALG, 5:30 - 6 GROUP ALGEBRA
+// Sun 04: 10 - 3 ALG, 3 - 4:30 CG, 4:30 - 5:10 GROUP CG
+// Mon 05: 6 - 8 CG
+
