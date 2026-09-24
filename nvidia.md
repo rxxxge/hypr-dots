@@ -25,7 +25,35 @@ sudo systemctl enable nvidia-hibernate.service
 Add nvidia.NVreg_PreserveVideoMemoryAllocations=1 to your kernel parameters
 rebuild the initramfs with sudo mkinitcpio -P, and reboot
 
-Packages:
+To fix instant wakeup on suspend:
+Modify:
+/etc/systemd/system-sleep/disable-xhci-wakeup 
+
+```bash
+#! /bin/bash
+case $1 in
+    pre)
+        declare -a devices=(XHCI) # <-- Add your entries here
+
+        for device in "${devices[@]}"; do
+            if $(grep -qw ^${device}.*enabled /proc/acpi/wakeup); then
+                echo ${device} > /proc/acpi/wakeup
+            fi
+        done
+    ;;
+esac
+```
+
+To sync system clock if disabled:
+sudo systemctl enable --now systemd-timesyncd
+
+For nvme:
+sudo systemctl enable --now fstrim.timer
+
+paccache.timer (optional)
+
+
+Packages (pacman):
 hyprland
 pipewire-pulse
 pavucontrol
