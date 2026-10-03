@@ -1,0 +1,22 @@
+{
+  "surface":                   "#{{ surface.hex }}",
+  "surface_container":         "#{{ surfaceContainer.hex }}",
+  "surface_container_low":     "#{{ surfaceContainerLow.hex }}",
+  "surface_container_high":    "#{{ surfaceContainerHigh.hex }}",
+  "surface_container_highest": "#{{ surfaceContainerHighest.hex }}",
+
+  "primary":                   "#{{ primary.hex }}",
+  "primary_container":         "#{{ primaryContainer.hex }}",
+  "on_primary_container":      "#{{ onPrimaryContainer.hex }}",
+
+  "outline":                   "#{{ outline.hex }}",
+  "outline_variant":           "#{{ outlineVariant.hex }}",
+
+  "cream":     "#{{ text.hex }}",
+  "bright":    "#{{ onBackground.hex }}",
+  "subtle":    "#{{ subtext1.hex }}",
+  "dim":       "#{{ subtext0.hex }}",
+  "faint":     "#{{ overlay0.hex }}",
+  "icon_dim":  "#{{ overlay2.hex }}",
+  "tick_rest": "#{{ subtext1.hex }}"
+}

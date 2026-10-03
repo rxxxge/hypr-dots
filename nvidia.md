@@ -1,4 +1,4 @@
-For NVIDIA setup:
+For NVIDIA setup (packages to install):
 nvidia-dkms
 linux-headers
 nvidia-utils
@@ -24,24 +24,39 @@ sudo systemctl enable nvidia-hibernate.service
 
 Add nvidia.NVreg_PreserveVideoMemoryAllocations=1 to your kernel parameters
 rebuild the initramfs with sudo mkinitcpio -P, and reboot
+```
+options nvidia NVreg_PreserveVideoMemoryAllocations=1
+```
 
 To fix instant wakeup on suspend:
 Modify:
-/etc/systemd/system-sleep/disable-xhci-wakeup 
+/etc/tmpfiles.d/disable-usb-wake.conf 
 
 ```bash
-#! /bin/bash
-case $1 in
-    pre)
-        declare -a devices=(XHCI) # <-- Add your entries here
+#    Path                  Mode UID  GID  Age Argument
+w!   /proc/acpi/wakeup     -    -    -    -   XHCI
+```
 
-        for device in "${devices[@]}"; do
-            if $(grep -qw ^${device}.*enabled /proc/acpi/wakeup); then
-                echo ${device} > /proc/acpi/wakeup
-            fi
-        done
-    ;;
-esac
+To fix lag or stutter in hyprland it's possible to boost minimum graphics clock speeds:
+`sudo nvidia-smi -lgc MIN_CLOCK(e.g 705),MAX_CLOCK(2100)`
+
+check with `nvidia-smi -q -d SUPPORTED_CLOCKS`
+
+Make it permanent:
+Modify `/etc/systemd/system/nvidia-clocks.service`:
+```
+[Unit]
+Description=Set NVIDIA GPU minimum clocks to avoid GSP timeouts/general system lag for composidors
+Requires=nvidia-persistenced.service
+After=nvidia-persistenced.service 
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/nvidia-smi -lgc MIN_CLOCK,MAX_CLOCK (705,2100)
+RemainAfterExit=yes 
+
+[Install]
+WantedBy=multi-user.target
 ```
 
 To sync system clock if disabled:
@@ -52,7 +67,11 @@ sudo systemctl enable --now fstrim.timer
 
 paccache.timer (optional)
 
+Security:
+set UMASK to 027 in /etc/login.defs
 
+
+**obsolete**
 Packages (pacman):
 hyprland
 pipewire-pulse

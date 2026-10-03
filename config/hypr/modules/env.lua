@@ -13,6 +13,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("GBM_BACKEND", "nvidia-drm")
 hl.env("LIBVA_DRIVER_NAME", "nvidia")
 hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
+-- hl.env("CUDA_CACHE_PATH", "/home/yato/.cache/nv/ComputeCache")
 -- VA-API hardware video acceleration 
 hl.env("NVD_BACKEND", "direct")
 

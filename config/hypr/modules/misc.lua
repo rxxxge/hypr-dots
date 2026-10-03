@@ -23,6 +23,8 @@ hl.config({
     },
 
     debug = {
-        error_position = 1
+        vfr = false,
+        error_position = 1,
+        overlay = false
     }
 })

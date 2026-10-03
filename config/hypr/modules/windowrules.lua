@@ -7,6 +7,22 @@
 
 -- Example window rules that are useful
 
+-- Tags an array of window matches. If `field` is given, matches should be an
+-- array of strings. Otherwise, it should be an array of tables.
+local function tagged_rule(tag, matches, field)
+    for _, match in ipairs(matches) do
+        if field then
+            local table = {}
+            table[field] = match
+            match = table
+        end
+        hl.window_rule({ match = match, tag = "+" .. tag })
+    end
+end
+
+-- All tags
+local opaque_tag = "opaque"
+
 local suppressMaximizeRule = hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
     name  = "suppress-maximize-events",
@@ -50,7 +66,7 @@ hl.window_rule({
 
 hl.window_rule({
     name  = "gtk-run",
-    match = { class = "^(thunar|org.pulseaudio.pavucontrol)$" },
+    match = { class = "^([Tt]hunar|org.pulseaudio.pavucontrol)$" },
 
     -- move  = "20 monitor_h-120",
     center = true,
@@ -65,15 +81,32 @@ hl.window_rule({
     -- move  = "20 monitor_h-120",
     center = true,
     size = {"(monitor_w*0.5)", "(monitor_h*0.5)"},
+    float = true
+})
+
+hl.window_rule({
+    name  = "term-run-floating",
+    match = { class = "floating-term" },
+
+    -- move  = "20 monitor_h-120",
+    center = true,
+    size = {"(monitor_w*0.75)", "(monitor_h*0.75)"},
     float = true,
 })
 
--- hl.window_rule({
---     name  = "kitty-run",
---     match = { class = "kitty" },
---
---     -- move  = "20 monitor_h-120",
---     center = true,
---     size = {"(monitor_w*0.75)", "(monitor_h*0.75)"},
---     float = true,
--- })
+
+hl.layer_rule({
+    match = { namespace = "quickshell:bar" },
+    blur = true,
+    ignore_alpha = 0.4
+
+})
+
+tagged_rule(opaque_tag, {
+    -- "equibop",                       -- Discord client
+    "org.quickshell",                -- Quickshell
+    -- "feh|imv|swappy",                -- Image viewers
+    -- "krita|gimp|inkscape|darktable", -- Image editors
+    -- "resolve|kdenlive|shotcut",      -- Video editors
+    -- "blender|godot",                 -- 3D editors
+}, "class")

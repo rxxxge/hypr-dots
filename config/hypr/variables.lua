@@ -1,4 +1,5 @@
 local scheme = require("scheme.current")
+local defaultTerm = "foot"
 
 return {
     ---------------------
@@ -6,10 +7,12 @@ return {
     ---------------------
 
     -- Set programs that you use
-    terminal                   = "kitty",
+    -- terminal                   = "kitty",
+    terminal                   = defaultTerm,
+    floatingTerminal           = defaultTerm .. " --class floating-term",
     browser                    = "zen-browser",
-    editor                     = "kitty nvim",
-    tuiFileExplorer            = "kitty --class nnn -e nnn",
+    editor                     = defaultTerm .. " nvim",
+    tuiFileExplorer            = defaultTerm .. " --class nnn -e nnn",
     fileExplorer               = "thunar",
     audioSettings              = "pavucontrol",
 
@@ -98,6 +101,7 @@ return {
 
     -- Apps
     kbTerminal                 = "SUPER + Return",
+    kbFloatingTerminal         = "SUPER + SHIFT + Return",
     kbBrowser                  = "SUPER + Backslash",
     kbEditor                   = "SUPER + Slash",
     kbTuiFileExplorer          = "SUPER + E",

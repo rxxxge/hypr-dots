@@ -13,6 +13,7 @@ PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\u@\h \w${PS1_CMD1}  '
 # [[ -f ~/.local/state/topia/sequences.txt ]] && cat ~/.local/state/topia/sequences.txt
 
 export PATH="$PATH:~/.local/bin"
+export EDITOR="nvim"
 export UTILS="SystemUtils"
 
 alias ls='eza --group-directories-first -1'

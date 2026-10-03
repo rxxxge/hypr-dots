@@ -3,6 +3,7 @@
   "logo": {
     "type": "auto",
     "source": "$HOME/.config/fastfetch/mk.txt",
+    // "source": "$HOME/.config/fastfetch/Official_gnu.svg",
     // "width": 15,
     // "height": 18,
     "padding": {

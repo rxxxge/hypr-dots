@@ -12,4 +12,28 @@
 	<startup-notify/>
 	<directories/>
 </action>
+<action>
+	<icon>kitty</icon>
+	<name>Open with Kitty</name>
+	<submenu></submenu>
+	<unique-id>1790224657785365-1</unique-id>
+	<command>kitty sh -c &quot;kitten icat --hold &apos;%f&apos;&quot;
+</command>
+	<description>View image in Kitty terminal</description>
+	<range>*</range>
+	<patterns>*.png;*.jpg;*.jpeg</patterns>
+	<image-files/>
+</action>
+<action>
+	<icon>neovim</icon>
+	<name>Open with Neovim</name>
+	<submenu></submenu>
+	<unique-id>1790810596506175-1</unique-id>
+	<command>kitty -e nvim %f</command>
+	<description>Opens a file inside Neovim</description>
+	<range>*</range>
+	<patterns>*</patterns>
+	<other-files/>
+	<text-files/>
+</action>
 </actions>

@@ -8,10 +8,10 @@ etckeeper
 eza
 fastfetch
 fd
+foot
 fzf
 git
 grub
-htop
 hyprland
 imagemagick
 inter-font
@@ -21,6 +21,7 @@ libva-nvidia-driver
 linux
 linux-firmware
 linux-headers
+lostfiles
 neovim
 networkmanager
 nnn
@@ -29,13 +30,16 @@ noto-fonts-cjk
 noto-fonts-emoji
 nvidia-open-dkms
 os-prober
+pacman-contrib
 pacutils
 pavucontrol
 pipewire-pulse
 python-pip
 python-pipx
+quickshell
 ripgrep
 thunar
+tree-sitter-cli
 ttf-dejavu
 ttf-firacode-nerd
 ttf-jetbrains-mono-nerd
