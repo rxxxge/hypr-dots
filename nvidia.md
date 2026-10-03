@@ -29,6 +29,7 @@ options nvidia NVreg_PreserveVideoMemoryAllocations=1
 ```
 
 To fix instant wakeup on suspend:
+check `cat /proc/acpi/wakeup`
 Modify:
 /etc/tmpfiles.d/disable-usb-wake.conf 
 
@@ -60,10 +61,10 @@ WantedBy=multi-user.target
 ```
 
 To sync system clock if disabled:
-sudo systemctl enable --now systemd-timesyncd
+`sudo systemctl enable --now systemd-timesyncd`
 
 For nvme:
-sudo systemctl enable --now fstrim.timer
+`sudo systemctl enable --now fstrim.timer`
 
 paccache.timer (optional)
 
